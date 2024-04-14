@@ -1,5 +1,6 @@
 #include "Window.h"
 #include "ErceWin.h"
+#include <sstream>
 
 Window::WindowClass Window::WindowClass::wndClass;
 
