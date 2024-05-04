@@ -2,6 +2,7 @@
 #include "ErceWin.h"
 #include <sstream>
 #include "Window.h"
+#include "App.h"
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) 
 {
@@ -51,20 +52,24 @@ int CALLBACK WinMain(
 	int nCmdWindow
 )
 {
-	Window wnd(800, 300, "Test");
-
-	MSG msg;
-	BOOL gResult;
-	while ((gResult = GetMessage(&msg, nullptr, 0, 0)) > 0) 
-	{
-		TranslateMessage(&msg);
-		DispatchMessage(&msg);
-	}
-	if (gResult == -1) {
-		return -1;
-	}
-	else {
-		return msg.wParam;
-	}
-	return 0;
+try
+{
+	return App{}.Start();
 }
+catch (const ErceException& e) 
+{
+	MessageBox(nullptr, e.what(), e.GetType(), MB_OK | MB_ICONEXCLAMATION);
+}
+catch (const std::exception& e)
+{
+	MessageBox(nullptr, e.what(), "Standart Exception", MB_OK | MB_ICONEXCLAMATION);
+}
+catch (...)
+{
+	MessageBox(nullptr, "No Details", "Unknown Exception", MB_OK | MB_ICONEXCLAMATION);
+}
+
+return -1;
+
+}
+
