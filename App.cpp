@@ -1,7 +1,7 @@
 #include "App.h"
 #include <chrono>
 
-App::App()
+App::App() 
 	:
 	wnd(800,600,"Erzi Engine")
 {}
@@ -22,9 +22,9 @@ int App::Start()
 //Same as Unity Update
 void App::Update()
 {
-	
-	const float t = timer.Peek();
-	std::ostringstream oss;
-	oss << "Time elapsed: " << std::setprecision(1) << std::fixed << t;
-	wnd.SetTitle(oss.str());
+	const float c = sin(timer.Peek() / 2.0f + 0.5f);
+
+	wnd.Gfx().ClearBuffer(c, c, 1.0f);
+	wnd.Gfx().DrawTestTriangle();
+	wnd.Gfx().EndFrame();
 }
