@@ -1,6 +1,5 @@
 #pragma once
 #include "Bindable.h"
-#include <string>
 class PixelShader : public Bindable
 {
 public:

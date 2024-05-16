@@ -7,10 +7,12 @@ public:
 	App();
 
 	int Start();
+	~App();
 private:
 	void Update();
 private:
 	Window wnd;
 	ErziTimer timer;
+	std::vector<std::unique_ptr<class Box>> boxes;
 };
 
