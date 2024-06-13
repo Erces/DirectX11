@@ -1,4 +1,5 @@
 #include "TransformCbuf.h"
+
 TransformCBuf::TransformCBuf(Graphics& gfx, const Drawable& parent)
 	:
 	vcbuf(gfx),

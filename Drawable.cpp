@@ -12,12 +12,13 @@ void Drawable::Draw(Graphics& gfx) const noexcept(!IS_DEBUG)
     {
         b->Bind(gfx);
     }
+    for (auto& b : GetStaticBinds())
+    {
+        b->Bind(gfx);
+    }
     gfx.DrawIndexed(pIndexBuffer->GetCount());
 }
-DirectX::XMMATRIX Drawable::GetTransformXM() const noexcept
-{
-    return DirectX::XMMATRIX();
-}
+
 
 void Drawable::AddBind(std::unique_ptr<Bindable> bind) noexcept (!IS_DEBUG)
 {
